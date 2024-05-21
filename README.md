@@ -1,81 +1,82 @@
-# Serial Memory Manipulation Library
 
-## Introduction
+# Biblioteca de Manipulação de Memória Serial
 
-The use of serial memory can be beneficial for data storage needs in various applications such as dataloggers, access control systems, etc. To facilitate the manipulation of the serial memory present in the kit, you will need to implement a set of 3 functions, whose interfaces and functionalities are defined below.
+## Introdução
 
-For the use of these functions, the user must declare the memory capacity in bytes using a define:
+O uso da memória serial pode ser útil para atender a necessidade de armazenamento de dados em várias aplicações, como dataloggers, sistemas de controle de acesso, etc. Visando facilitar a manipulação da memória serial presente no kit, você deverá implementar um conjunto de 3 funções cujas interfaces e funcionalidades são definidas a seguir.
+
+Para o uso das funções, o usuário deverá declarar a capacidade da memória em bytes através de um define:
 ```c
 #define MEMORY_CAPACITY DDDD
 ```
-where `DDDD` is the capacity of the memory in bytes.
+onde `DDDD` é a capacidade da memória em bytes.
 
-Additionally, the implemented functions consider the concept of random access.
+Além disso, as funções implementadas consideram o conceito de acesso aleatório.
 
-## Functions
+## Funções
 
-### Read Operation
+### Operação de Leitura
 
-Reads a block of bytes from the current position of a pointer associated with the memory. Before using the read function, it is likely necessary to position the pointer. The read operation automatically advances the pointer, allowing consecutive reads without the need for repositioning the pointer.
+Realiza a leitura de um bloco de bytes a partir da posição atual de um ponteiro associado à memória. Antes de usar a função de leitura, provavelmente será necessário posicionar o ponteiro. A operação de leitura avança automaticamente este ponteiro, permitindo a realização de leituras consecutivas sem a necessidade de reposicionamento do ponteiro.
 
-#### Function Interface
+#### Interface da Função
 ```c
 uint8_t serial_memory_read(uint8_t *buffer, uint16_t num_bytes);
 ```
 
-#### Parameters
-- `num_bytes`: Specifies the number of words (or bytes, depending on the memory organization) to be read.
-- `*buffer`: A pointer to a buffer where the read data will be stored.
+#### Parâmetros
+- `num_bytes`: Especifica o número de palavras (ou bytes, dependendo da organização da memória) a serem lidas.
+- `*buffer`: Um ponteiro para um buffer onde os dados lidos serão armazenados.
 
-#### Return
-The function returns `0` on success and `-1` on failure.
+#### Retorno
+A função retorna `0` em caso de sucesso e `-1` em caso de falha.
 
-#### Error Conditions
-- If the pointer associated with the memory reaches the maximum value (greater than `MEMORY_CAPACITY`), the function returns `-1`. In this case, no data is returned in the buffer, and the pointer associated with the memory is not changed.
+#### Condições de Erro
+- Se o ponteiro associado à memória atingir o valor máximo (maior que `MEMORY_CAPACITY`), a função retorna `-1`. Neste caso, nenhum dado é retornado no buffer e o ponteiro associado à memória não é alterado.
 
-### Write Operation
+### Operação de Escrita
 
-Writes a block of bytes from the current position of a pointer associated with the memory. Before using the write function, it is likely necessary to position the pointer. The write operation automatically advances the pointer, allowing consecutive writes without the need for repositioning the pointer.
+Realiza a escrita de um bloco de bytes a partir da posição atual de um ponteiro associado à memória. Antes de usar a função de escrita, provavelmente será necessário posicionar o ponteiro. A operação de escrita avança automaticamente este ponteiro, permitindo a realização de escritas consecutivas sem a necessidade de reposicionamento do ponteiro.
 
-#### Function Interface
+#### Interface da Função
 ```c
 uint8_t serial_memory_write(const uint8_t *data, uint16_t num_bytes);
 ```
 
-#### Parameters
-- `num_bytes`: Specifies the number of words (or bytes, depending on the memory organization) to be written.
-- `*data`: A pointer to the data to be written to the memory.
+#### Parâmetros
+- `num_bytes`: Especifica o número de palavras (ou bytes, dependendo da organização da memória) a serem escritas.
+- `*data`: Um ponteiro para os dados a serem escritos na memória.
 
-#### Return
-The function returns `0` on success and `-1` on failure.
+#### Retorno
+A função retorna `0` em caso de sucesso e `-1` em caso de falha.
 
-#### Error Conditions
-- If the number of words to be written exceeds the remaining capacity of the memory from the initial address, the function returns `-1`.
+#### Condições de Erro
+- Se o número de palavras a serem escritas exceder a capacidade restante da memória a partir do endereço inicial, a função retorna `-1`.
 
-### Seek Operation
+### Operação de Busca (Seek)
 
-Repositions the pointer associated with the memory.
+Reposiciona o ponteiro associado à memória.
 
-#### Function Interface
+#### Interface da Função
 ```c
 uint8_t serial_memory_seek(int16_t offset, uint8_t origin);
 ```
 
-#### Parameters
-- `offset`: Indicates the displacement relative to the current position in the memory. It can be a positive or negative value represented by an appropriate data type (such as `int16_t`).
-- `origin`: Indicates where the displacement should start (beginning, end, current position). The options are defined as:
+#### Parâmetros
+- `offset`: Indica o deslocamento em relação à posição atual na memória. Pode ser um valor positivo ou negativo representado por um tipo de dado adequado (como `int16_t`).
+- `origin`: Indica de onde o deslocamento deve começar (início, fim, posição atual). As opções são definidas como:
   ```c
   #define SEEK_SET 0
   #define SEEK_CUR 1
   #define SEEK_END 2
   ```
 
-  - `origin == SEEK_SET`: This is the default value and indicates that the displacement should start from the beginning of the memory. The displacement will be relative to the first byte or word in the memory.
-  - `origin == SEEK_CUR`: This means that the displacement should start from the current position in the memory. The displacement will be relative to the current position of the read/write pointer in the memory.
-  - `origin == SEEK_END`: This indicates that the displacement should start from the end of the memory. The displacement will be relative to the last byte or word in the memory.
+  - `origin == SEEK_SET`: Este é o valor padrão e indica que o deslocamento deve começar a partir do início da memória. Ou seja, o deslocamento será relativo ao primeiro byte ou palavra na memória.
+  - `origin == SEEK_CUR`: Isso significa que o deslocamento deve começar a partir da posição atual na memória. Ou seja, o deslocamento será relativo à posição atual do ponteiro de leitura/escrita na memória.
+  - `origin == SEEK_END`: Isso indica que o deslocamento deve começar a partir do final da memória. Ou seja, o deslocamento será relativo ao último byte ou palavra na memória.
 
-#### Return
-The function returns the new position in the memory after the seek operation on success and `-1` on failure.
+#### Retorno
+A função retorna a nova posição na memória após a operação de busca em caso de sucesso e `-1` em caso de falha.
 
-#### Error Conditions
-- If the resulting position of the seek is outside the memory limits (greater than or equal to `MEMORY_CAPACITY`), the function returns `-1`.
+#### Condições de Erro
+- Se a posição resultante da busca estiver fora dos limites da memória (maior ou igual a `MEMORY_CAPACITY`), a função retorna `-1`.
