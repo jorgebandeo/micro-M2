@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/debug\Biblioteca_de_Manipulacao_de_Memoria_Serial.X.debug.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>28673</length>
+      <used>2798</used>
+      <free>25875</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>1536</length>
+      <used>111</used>
+      <free>1425</free>
+    </memory>
+  </executable>
+</project>
