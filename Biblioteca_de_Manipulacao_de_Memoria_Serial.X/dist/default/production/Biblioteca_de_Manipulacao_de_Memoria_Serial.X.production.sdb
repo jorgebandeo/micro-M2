@@ -41,7 +41,7 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"17 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\I2C_Master.c
+"17 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\I2C_Master.c
 [v _I2C_INICIA I2C_INICIA `(v  1 e 1 0 ]
 "27
 [v _I2C_LIVRE I2C_LIVRE `(uc  1 e 1 0 ]
@@ -61,23 +61,82 @@
 [v _I2C_ACK I2C_ACK `(v  1 e 1 0 ]
 "127
 [v _I2C_NACK I2C_NACK `(v  1 e 1 0 ]
-"17 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
+"50 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
 [v _initUART initUART `(v  1 e 1 0 ]
-"30
+"63
 [v _putch putch `(v  1 e 1 0 ]
-"42
+"75
 [v _i2c_write i2c_write `(v  1 e 1 0 ]
-"61
+"94
 [v _i2c_read i2c_read `(v  1 e 1 0 ]
-"82
+"118
 [v _serial_memory_read serial_memory_read `(uc  1 e 1 0 ]
-"98
+"132
 [v _serial_memory_write serial_memory_write `(uc  1 e 1 0 ]
-"116
+"149
 [v _serial_memory_seek serial_memory_seek `(uc  1 e 1 0 ]
-"153
+"177
+[v _count_characters count_characters `(i  1 e 2 0 ]
+"187
+[v _init init `(v  1 e 1 0 ]
+"213
+[v _display_sequence display_sequence `(v  1 e 1 0 ]
+"248
 [v _main main `(i  1 e 2 0 ]
-"1921 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[s S273 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"315 C:/Users/berna/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[s S317 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CCP2 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S326 . 1 `uc 1 AN12 1 0 :1:0 
+`uc 1 AN10 1 0 :1:1 
+`uc 1 AN8 1 0 :1:2 
+`uc 1 AN9 1 0 :1:3 
+`uc 1 AN11 1 0 :1:4 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S335 . 1 `uc 1 FLT0 1 0 :1:0 
+]
+[s S337 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S340 . 1 `S273 1 . 1 0 `S317 1 . 1 0 `S326 1 . 1 0 `S335 1 . 1 0 `S337 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES340  1 e 1 @3969 ]
+"1089
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"1313
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"1699
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S264 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1731
+[u S282 . 1 `S264 1 . 1 0 `S273 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES282  1 e 1 @3987 ]
+"1921
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 [s S24 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
@@ -100,6 +159,8 @@
 ]
 [u S42 . 1 `S24 1 . 1 0 `S33 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES42  1 e 1 @3988 ]
+"2143
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 [s S164 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
@@ -181,9 +242,11 @@
 ]
 [u S86 . 1 `S66 1 . 1 0 `S75 1 . 1 0 `S80 1 . 1 0 `S83 1 . 1 0 ]
 [v _BAUDCONbits BAUDCONbits `VES86  1 e 1 @4024 ]
+"4690
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "4915
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
-[s S480 . 1 `uc 1 SEN 1 0 :1:0 
+[s S635 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -193,27 +256,27 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "4940
-[s S489 . 1 `uc 1 . 1 0 :1:0 
+[s S644 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[u S496 . 1 `S480 1 . 1 0 `S489 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES496  1 e 1 @4037 ]
+[u S651 . 1 `S635 1 . 1 0 `S644 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES651  1 e 1 @4037 ]
 "5010
 [v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
 "5080
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S351 . 1 `uc 1 . 1 0 :2:0 
+[s S506 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "5156
-[s S354 . 1 `uc 1 . 1 0 :5:0 
+[s S509 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S357 . 1 `uc 1 BF 1 0 :1:0 
+[s S512 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -222,50 +285,50 @@
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S366 . 1 `uc 1 . 1 0 :2:0 
+[s S521 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S371 . 1 `uc 1 . 1 0 :2:0 
+[s S526 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S376 . 1 `uc 1 . 1 0 :2:0 
+[s S531 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S381 . 1 `uc 1 . 1 0 :2:0 
+[s S536 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S386 . 1 `uc 1 . 1 0 :2:0 
+[s S541 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S389 . 1 `uc 1 . 1 0 :5:0 
+[s S544 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S392 . 1 `uc 1 . 1 0 :2:0 
+[s S547 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S397 . 1 `uc 1 . 1 0 :2:0 
+[s S552 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S403 . 1 `uc 1 . 1 0 :2:0 
+[s S558 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S408 . 1 `S351 1 . 1 0 `S354 1 . 1 0 `S357 1 . 1 0 `S366 1 . 1 0 `S371 1 . 1 0 `S376 1 . 1 0 `S381 1 . 1 0 `S386 1 . 1 0 `S389 1 . 1 0 `S392 1 . 1 0 `S397 1 . 1 0 `S403 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES408  1 e 1 @4039 ]
+[u S563 . 1 `S506 1 . 1 0 `S509 1 . 1 0 `S512 1 . 1 0 `S521 1 . 1 0 `S526 1 . 1 0 `S531 1 . 1 0 `S536 1 . 1 0 `S541 1 . 1 0 `S544 1 . 1 0 `S547 1 . 1 0 `S552 1 . 1 0 `S558 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES563  1 e 1 @4039 ]
 "5301
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
 "5308
@@ -277,62 +340,70 @@
 [v _flags flags `uc  1 s 1 flags ]
 "185
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
-"12 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
+"26 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
 [v _current_pointer current_pointer `us  1 s 2 current_pointer ]
-"153
+"29
+[v _segment_map segment_map `C[13]uc  1 e 13 0 ]
+"248
 [v _main main `(i  1 e 2 0 ]
 {
-"159
-[v main@read_buffer read_buffer `[12]uc  1 a 12 58 ]
-"157
-[v main@message message `*.32Cuc  1 a 2 70 ]
-"182
+"290
+[v main@error_message error_message `*.32Cuc  1 a 2 100 ]
+"265
+[v main@read_buffer read_buffer `[100]uc  1 a 100 0 ]
+"256
+[v main@message_length message_length `i  1 a 2 106 ]
+"254
+[v main@message message `*.32Cuc  1 a 2 104 ]
+"252
+[v main@erro_mem erro_mem `i  1 a 2 102 ]
+"311
 } 0
-"98
+"132
 [v _serial_memory_write serial_memory_write `(uc  1 e 1 0 ]
 {
 [v serial_memory_write@data data `*.32Cuc  1 p 2 52 ]
 [v serial_memory_write@num_bytes num_bytes `us  1 p 2 54 ]
-"108
+"141
 } 0
-"42
+"75
 [v _i2c_write i2c_write `(v  1 e 1 0 ]
 {
-"45
+"76
 [v i2c_write@i i `us  1 a 2 50 ]
-"42
+"75
 [v i2c_write@address address `us  1 p 2 42 ]
 [v i2c_write@data data `*.32Cuc  1 p 2 44 ]
 [v i2c_write@length length `us  1 p 2 46 ]
-"58
+"91
 } 0
-"116
+"149
 [v _serial_memory_seek serial_memory_seek `(uc  1 e 1 0 ]
 {
-"117
+"150
 [v serial_memory_seek@new_pointer new_pointer `us  1 a 2 45 ]
-"116
+"149
 [v serial_memory_seek@offset offset `s  1 p 2 42 ]
 [v serial_memory_seek@origin origin `uc  1 p 1 44 ]
-"142
+"175
 } 0
-"82
+"118
 [v _serial_memory_read serial_memory_read `(uc  1 e 1 0 ]
 {
 [v serial_memory_read@buffer buffer `*.30uc  1 p 1 51 ]
 [v serial_memory_read@num_bytes num_bytes `us  1 p 2 52 ]
-"95
+"129
 } 0
-"61
+"94
 [v _i2c_read i2c_read `(v  1 e 1 0 ]
 {
-"62
+"95
 [v i2c_read@i i `us  1 a 2 49 ]
-"61
+"94
 [v i2c_read@address address `us  1 p 2 42 ]
 [v i2c_read@data data `*.30uc  1 p 1 44 ]
 [v i2c_read@length length `us  1 p 2 45 ]
-"80
+"116
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -348,9 +419,9 @@
 {
 "1820
 [v vfprintf@cfmt cfmt `*.32uc  1 a 2 31 ]
-[s S1022 _IO_FILE 0 ]
+[s S1177 _IO_FILE 0 ]
 "1817
-[v vfprintf@fp fp `*.39S1022  1 p 2 26 ]
+[v vfprintf@fp fp `*.39S1177  1 p 2 26 ]
 [v vfprintf@fmt fmt `*.32Cuc  1 p 2 28 ]
 [v vfprintf@ap ap `*.30*.30v  1 p 1 30 ]
 "1840
@@ -359,18 +430,18 @@
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
 "1669
-[v vfpfcnvrt@cp_1064 cp `*.35uc  1 a 2 17 ]
-[u S1035 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+[v vfpfcnvrt@cp_1219 cp `*.35uc  1 a 2 17 ]
+[u S1190 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
 "1188
-[v vfpfcnvrt@convarg convarg `S1035  1 a 4 21 ]
+[v vfpfcnvrt@convarg convarg `S1190  1 a 4 21 ]
 "1179
 [v vfpfcnvrt@cp cp `*.32uc  1 a 2 19 ]
 [v vfpfcnvrt@c c `uc  1 a 1 25 ]
 "1180
 [v vfpfcnvrt@done done `a  1 a 1 16 ]
-[s S1022 _IO_FILE 0 ]
+[s S1177 _IO_FILE 0 ]
 "1177
-[v vfpfcnvrt@fp fp `*.39S1022  1 p 2 10 ]
+[v vfpfcnvrt@fp fp `*.39S1177  1 p 2 10 ]
 [v vfpfcnvrt@fmt fmt `*.30*.32uc  1 p 1 12 ]
 [v vfpfcnvrt@ap ap `*.30*.30v  1 p 1 13 ]
 "1814
@@ -379,18 +450,18 @@
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 1 ]
-[u S1000 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1003 _IO_FILE 12 `S1000 1 . 3 0 `i 1 count 2 3 `[3]uc 1 ungetbuf 3 5 `i 1 ungetcnt 2 8 `i 1 limit 2 10 ]
-[v fputc@fp fp `*.39S1003  1 p 2 3 ]
+[u S1155 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S1158 _IO_FILE 12 `S1155 1 . 3 0 `i 1 count 2 3 `[3]uc 1 ungetbuf 3 5 `i 1 ungetcnt 2 8 `i 1 limit 2 10 ]
+[v fputc@fp fp `*.39S1158  1 p 2 3 ]
 "24
 } 0
-"30 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
+"63 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 0 ]
-"35
+"68
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -414,7 +485,7 @@
 [v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
 "30
 } 0
-"43 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\I2C_Master.c
+"43 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\I2C_Master.c
 [v _I2C_TRANSMITE I2C_TRANSMITE `(v  1 e 1 0 ]
 {
 [v I2C_TRANSMITE@DADO_I2C DADO_I2C `uc  1 a 1 wreg ]
@@ -455,12 +526,50 @@
 {
 "126
 } 0
-"17 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
+"50 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\main.c
 [v _initUART initUART `(v  1 e 1 0 ]
 {
-"28
+"61
 } 0
-"17 C:\Users\jorge\MPLABXProjects\Projeto millis - jorge, Bernardo\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\I2C_Master.c
+"187
+[v _init init `(v  1 e 1 0 ]
+{
+"197
+} 0
+"213
+[v _display_sequence display_sequence `(v  1 e 1 0 ]
+{
+"232
+[v display_sequence@j_470 j `uc  1 a 1 14 ]
+"217
+[v display_sequence@ch ch `uc  1 a 1 15 ]
+"231
+[v display_sequence@refresh refresh `uc  1 a 1 12 ]
+"216
+[v display_sequence@j j `uc  1 a 1 16 ]
+"215
+[v display_sequence@digits digits `[4]uc  1 a 4 8 ]
+"214
+[v display_sequence@i i `uc  1 a 1 13 ]
+"213
+[v display_sequence@sequence sequence `*.35Cuc  1 p 2 0 ]
+[v display_sequence@length length `uc  1 p 1 2 ]
+"214
+[v display_sequence@F2951 F2951 `[4]uc  1 s 4 F2951 ]
+"244
+} 0
+"177
+[v _count_characters count_characters `(i  1 e 2 0 ]
+{
+"181
+[v count_characters@i i `i  1 a 2 6 ]
+"178
+[v count_characters@count count `i  1 a 2 4 ]
+"177
+[v count_characters@message message `*.32Cuc  1 p 2 0 ]
+"186
+} 0
+"17 D:\Cloud\OneDrive - UNIVALI\2024-1\Microcontroladores\M2\micro-M2\Biblioteca_de_Manipulacao_de_Memoria_Serial.X\I2C_Master.c
 [v _I2C_INICIA I2C_INICIA `(v  1 e 1 0 ]
 {
 "26
