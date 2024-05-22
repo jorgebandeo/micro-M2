@@ -6,6 +6,11 @@
                    projectFiles="true">
       <itemPath>I2C_Master.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -15,11 +20,6 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>I2C_Master.c</itemPath>
-    </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -608,6 +608,11 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
+      <Tool>
+        <property key="design.file" value="I2C.pdsprj"/>
+        <property key="target.ip.address" value="localhost"/>
+        <property key="target.ip.port" value="8001"/>
+      </Tool>
       <VSMViewerPlatformTool>
         <property key="design.file" value="I2C.pdsprj"/>
         <property key="target.ip.address" value="localhost"/>
