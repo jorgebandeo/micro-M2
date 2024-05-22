@@ -6,25 +6,25 @@
 #pragma config MCLRE = ON, WDT = OFF, OSC = HS
 
 #define _XTAL_FREQ 16000000
-#define MEMORY_CAPACITY 32768 // Defina a capacidade em bytes da memÛria
-#define EEPROM_I2C_ADDRESS 0xA0 // Novo endereÁo I2C da EEPROM
-
-static uint16_t current_pointer = 0; // Ponteiro associado ‡ memÛria
+#define MEMORY_CAPACITY 32768 // Defina a capacidade em bytes da mem√≥ria
+#define EEPROM_I2C_ADDRESS 0xA0 // Novo endere√ßo I2C da EEPROM
+#define MAX_BUFFER_SIZE 100  // Defina um tamanho m√°ximo adequado para o seu buffer
+static uint16_t current_pointer = 0; // Ponteiro associado √† mem√≥ria
 
 /*******************************************
- * FunÁıes associadas ‡ comunicaÁ„o serial *
+ * Fun√ß√µes associadas √† comunica√ß√£o serial *
  *******************************************/
 void initUART(void) {
-    TRISCbits.RC6 = 0; // Porta TX como saÌda digital
+    TRISCbits.RC6 = 0; // Porta TX como sa√≠da digital
     TRISCbits.RC7 = 1; // Porta RX como entrada digital
     SPBRG = 34; // Ajuste do gerador de baud rate (115200 bps p/ fosc = 16MHz)
     SPBRGH = 0;
     BAUDCONbits.BRG16 = 1; // Modo de 16 bits
     TXSTAbits.BRGH = 1; 
-    TXSTAbits.SYNC = 0; // Modo assÌncrono
+    TXSTAbits.SYNC = 0; // Modo ass√≠ncrono
     TXSTAbits.TXEN = 1; // Habilita TX
     RCSTAbits.SPEN = 1; // Serial habilitada
-    RCSTAbits.CREN = 1; // Modo contÌnuo para recepÁ„o   
+    RCSTAbits.CREN = 1; // Modo cont√≠nuo para recep√ß√£o   
 }
 
 void putch(char byte) {
@@ -35,39 +35,45 @@ void putch(char byte) {
 }
 
 /*******************************************
- * FunÁıes para leitura e escrita I2C *
+ * Fun√ß√µes para leitura e escrita I2C *
  *******************************************/
 
-// FunÁ„o para escrita de dados na EEPROM via I2C
+// Fun√ß√£o para escrita de dados na EEPROM via I2C
 void i2c_write(uint16_t address, const uint8_t *data, uint16_t length) {
 
 
     for (uint16_t i = 0; i < length; i++) {
         I2C_START();
         I2C_TRANSMITE(EEPROM_I2C_ADDRESS);
-        I2C_TRANSMITE((address >> 8) & 0xFF); // EndereÁo alto
-        I2C_TRANSMITE(address & 0xFF);        // EndereÁo baixo
+        I2C_TRANSMITE((address >> 8) & 0xFF); // Endere√ßo alto
+        I2C_TRANSMITE(address & 0xFF);        // Endere√ßo baixo
+        if ((uint8_t)(data[i]) == 255 ){
+            break;
+        }
         I2C_TRANSMITE((uint8_t)(data[i]));
-        printf("Endereco atual: %u, Leitura [%u] = %u \r\n", address, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endereÁo atual
+        printf("Endereco atual: %u, Leitura [%u] = %u \r\n", address, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endere√ßo atual
         I2C_STOP();
         __delay_ms(20); // Tempo de escrita da EEPROM
         address = 2 + address; // pula de volta para a coluna de memoria de dados e da sequncia embaixo
 
     }
-    
+    return;
 }
 
-// FunÁ„o para leitura de dados da EEPROM via I2C
+// Fun√ß√£o para leitura de dados da EEPROM via I2C
 void i2c_read(uint16_t address, uint8_t *data, uint16_t length) {
     for (uint16_t i = 0; i < length; i++) {
         I2C_START();
         I2C_TRANSMITE(EEPROM_I2C_ADDRESS);
-        I2C_TRANSMITE((address >> 8) & 0xFF); // EndereÁo alto
-        I2C_TRANSMITE(address & 0xFF);        // EndereÁo baixo
+        I2C_TRANSMITE((address >> 8) & 0xFF); // Endere√ßo alto
+        I2C_TRANSMITE(address & 0xFF);        // Endere√ßo baixo
         I2C_RESTART();
         I2C_TRANSMITE(EEPROM_I2C_ADDRESS | 1); // Leitura
         data[i] = I2C_RECEBE();
-        printf("Endereco atual: %u, Leitura [%u] = %u \r\n", address, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endereÁo atual
+        if ((uint8_t)(data[i]) == 255 ){
+            break;
+        }
+        printf("Endereco atual: %u, Leitura [%u] = %u \r\n", address, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endere√ßo atual
         if (i < length - 1) {
             I2C_ACK();
         } else {
@@ -77,42 +83,43 @@ void i2c_read(uint16_t address, uint8_t *data, uint16_t length) {
         address = 2 + address;// pula de volta para a coluna de memoria de dados e da sequncia embaixo
 
     }
+    return;
 }
 
 uint8_t serial_memory_read(uint8_t *buffer, uint16_t num_bytes) {
 
     
-    // Verifica se h· espaÁo suficiente na memÛria
+    // Verifica se h√° espa√ßo suficiente na mem√≥ria
     if (num_bytes <= 0) {
         printf("Erro: Tentativa de ler alem da capacidade da memoria\r\n");
         return (uint8_t)-1;
     }
 
-    // Realiza a leitura da memÛria
+    // Realiza a leitura da mem√≥ria
     i2c_read(current_pointer, buffer, num_bytes);
 
     return 0; // Sucesso
 }
 
-// FunÁ„o de Escrita
+// Fun√ß√£o de Escrita
 uint8_t serial_memory_write(const uint8_t *data, uint16_t num_bytes) {
     if (current_pointer + num_bytes > MEMORY_CAPACITY) {
         printf("Erro: Tentativa de escrever alem da capacidade da memoria\r\n");
         return (uint8_t)-1;
     }
 
-    i2c_write(current_pointer, data, num_bytes); // Escrever dados na memÛria
+    i2c_write(current_pointer, data, num_bytes); // Escrever dados na mem√≥ria
 
 
     return 0; // Sucesso
 }
 
-// DefiniÁıes para a funÁ„o de busca (seek)
+// Defini√ß√µes para a fun√ß√£o de busca (seek)
 #define SEEK_SET 0
 #define SEEK_CUR 1
 #define SEEK_END 2
 
-// FunÁ„o de Busca (Seek)
+// Fun√ß√£o de Busca (Seek)
 uint8_t serial_memory_seek(int16_t offset, uint8_t origin) {
     uint16_t new_pointer;
 
@@ -143,7 +150,7 @@ uint8_t serial_memory_seek(int16_t offset, uint8_t origin) {
 int count_characters(const char *message) {
     int count = 0;
     
-    // Percorre a string atÈ encontrar o caractere nulo '\0'
+    // Percorre a string at√© encontrar o caractere nulo '\0'
     for (int i = 0; message[i] != '\0'; ++i) {
         count++;
     }
@@ -154,28 +161,41 @@ int main(void) {
     initUART();
     I2C_INICIA(); // Inicializa o I2C
 
-    const char *message = "hola mundo";
-
-    uint8_t read_buffer[12]; // Buffer para ler a mensagem
+    const char *message = "1028382";
     
 
-    if (serial_memory_write((const uint8_t *)message, 12) == 0) {
+    int message_length = count_characters(message);
+
+    if (message_length + 1 > MAX_BUFFER_SIZE) {
+        // Tratamento de erro caso a mensagem seja maior que o tamanho m√°ximo do buffer
+        printf("Erro: mensagem muito longa.\n");
+        return 1;
+    }
+
+    // Cria o buffer de leitura com o tamanho m√°ximo definido
+    uint8_t read_buffer[MAX_BUFFER_SIZE];
+    
+
+    
+    
+    if (serial_memory_write((const uint8_t *)message, (uint16_t)(message_length)) == 0) {
         printf("Sucesso na escrita: %s\r\n", message);
     }
 
-    // Reposiciona o ponteiro no inÌcio para ler a mensagem
+    // Reposiciona o ponteiro no in√≠cio para ler a mensagem
     if (serial_memory_seek(0, SEEK_SET) == 0) {
         printf("Sucesso no reposicionamento do ponteiro\r\n");
     }
 
-    // LÍ a mensagem da memÛria
+    // L√™ a mensagem da mem√≥ria
     if (serial_memory_read(read_buffer, sizeof(read_buffer)) == 0) {
+        read_buffer[message_length] = '\0'; // Adiciona o caractere nulo no final
         printf("Sucesso na leitura: %s\r\n", read_buffer);
     }
 
-    // Loop principal do programa (se necess·rio)
+    // Loop principal do programa (se necess√°rio)
     while (1) {
-        // CÛdigo principal
+        // C√≥digo principal
     }
 
     return 0;
