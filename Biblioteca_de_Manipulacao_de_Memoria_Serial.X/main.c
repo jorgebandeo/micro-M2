@@ -82,7 +82,7 @@ void i2c_write(uint16_t address, const uint8_t *data, uint16_t length) {
             break;
         }
         I2C_TRANSMITE((uint8_t)(data[i]));
-        printf("Endereco atual: %u, Leitura [%u] = %u \r\n", address, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endereco atual
+        printf("Endereco atual: 0x%x, Escrita [%u] = %u \r\n", address + EEPROM_I2C_ADDRESS, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endereco atual
         I2C_STOP();
         __delay_ms(20); // Tempo de escrita da EEPROM
         address = 2 + address; // pula de volta para a coluna de memoria de dados e da sequencia embaixo
@@ -103,7 +103,7 @@ void i2c_read(uint16_t address, uint8_t *data, uint16_t length) {
         if ((uint8_t)(data[i]) == 255 ){
             break;
         }
-        printf("Endereco atual: %u, Leitura [%u] = %u \r\n", address, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endereco atual
+        printf("Endereco atual: 0x%x, Leitura [%u] = %u \r\n", address + EEPROM_I2C_ADDRESS, i, (uint8_t)(data[i])); // Adicione esta linha para imprimir o endereco atual
         if (i < length - 1) {
             I2C_ACK();
         } else {
@@ -169,7 +169,7 @@ uint8_t serial_memory_seek(int16_t offset, uint8_t origin) {
         return (uint8_t)-1;
     }
 
-    printf("Seek: Posicao alterada para %u\r\n", new_pointer);
+    printf("Seek: Posicao alterada para 0x%x\r\n", new_pointer + EEPROM_I2C_ADDRESS);
     current_pointer = new_pointer;
     return 0; // Sucesso
 }

@@ -4,7 +4,7 @@
 # 288 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "C:/Users/berna/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c" 2
 
@@ -842,7 +842,7 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 10 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c" 2
 
-# 1 "C:/Users/berna/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\inline.h" 1 3
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\inline.h" 1 3
 # 11 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdbool.h" 1 3
@@ -911,7 +911,18 @@ vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
 
   long double f;
  } convarg;
-# 1201 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c"
+
+
+
+
+
+ char x;
+
+
+
+
+
+
     if ((*fmt)[0] == '%') {
         ++*fmt;
 
@@ -921,6 +932,8 @@ vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
   cp = *fmt;
 # 1439 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c"
   if (0
+
+    || *cp == 'x'
 # 1450 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c"
     || *cp == 'u'
 
@@ -948,7 +961,46 @@ vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
 
 
      return;
-# 1589 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c"
+# 1550 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c"
+    case 'x':
+
+
+     c = sizeof(dbuf);
+
+
+
+     do {
+      x = (convarg.uint & 0xf);
+      if (x < 10) {
+       x += '0';
+      }
+      else {
+
+
+
+       x += 'a' - 10;
+
+
+
+      }
+      dbuf[--c] = x;
+      convarg.uint >>= 4;
+
+
+
+     } while (convarg.uint != 0 && c != 0);
+     while (c != sizeof(dbuf)) {
+      fputc(dbuf[c++], fp);
+     }
+
+
+
+     return;
+
+
+
+
+
    }
   }
 # 1656 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\sources\\c99\\common\\doprnt.c"

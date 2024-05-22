@@ -608,11 +608,6 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
-      <Tool>
-        <property key="design.file" value="I2C.pdsprj"/>
-        <property key="target.ip.address" value="localhost"/>
-        <property key="target.ip.port" value="8001"/>
-      </Tool>
       <VSMViewerPlatformTool>
         <property key="design.file" value="I2C.pdsprj"/>
         <property key="target.ip.address" value="localhost"/>
